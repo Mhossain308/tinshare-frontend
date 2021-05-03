@@ -4,6 +4,7 @@ import ItineraryContainer from './page/ItineraryContainer'
 import Addform from './page/Addform';
 import {Switch, Route} from 'react-router-dom'
 import Updateform from './components/UpdateForm';
+import NavBar from './components/NavBar';
 
 
 function App() {
@@ -33,21 +34,27 @@ function handleUpdatedItinerary(updatedNewItinerary) {
   setItineraries(updatedItinerary)
 
 }
+
+const handleDeleteItinerary = (ItineraryToDelete) => {
+  const updatedItinerary = itineraries.filter((itinerary) => itinerary.id !== ItineraryToDelete.id);
+  setItineraries(updatedItinerary);
+}
   
   
   return (
     <div className="App">
+      <NavBar/>
       <Switch>
           <Route exact path= "/show"> 
-            <ItineraryContainer itineraries={itineraries} onUpdatedItinerary={handleUpdatedItinerary} />
+            <ItineraryContainer itineraries={itineraries} onUpdatedItinerary={handleUpdatedItinerary} onDelete={handleDeleteItinerary} />
           </Route>
        
           <Route exact path= "/update"> 
-            <Updateform onUpdatedItinerary={handleUpdatedItinerary} />
+              <Updateform onUpdatedItinerary={handleUpdatedItinerary}/>
           </Route>
         
-         <Route exact path= "/new">
-            <Addform addItin={handleForm} />
+           <Route exact path= "/new">
+              <Addform addItin={handleForm} />
           </Route>
      </Switch>
     </div>

@@ -4,10 +4,19 @@ import './ItineraryItem.css'
 
 
 
-function ItineraryItem({itinerary, handleUpdatedItinerary}) {
+function ItineraryItem({itinerary, onUpdatedItinerary, onDelete}) {
     console.log(itinerary)
     
-return(
+    
+    const handleDelete = () => {
+        fetch(`http://localhost:4000/itineraries/${itinerary.id}`, {
+          method: "DELETE",
+        })
+            onDelete(itinerary);
+          };
+    
+    
+    return(
     <main className="grid">
         <article>
         
@@ -17,8 +26,8 @@ return(
                     <p>{itinerary.description}</p>
                     <p>{itinerary.comment}</p>
                     <p>{itinerary.likes}</p>
-                    <Updateform itinerary={itinerary} handleUpdatedItinerary={handleUpdatedItinerary} />
-                    <button> Delete </button>
+                    <Updateform itinerary={itinerary} onUpdatedItinerary={onUpdatedItinerary}/>
+                    <button style= {{color:"rgb(13, 93, 162)"}} onClick={handleDelete}> Delete </button>
                 </div>
          </article>
     </main>

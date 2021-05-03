@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import {Link} from 'react-router-dom'
+
+
 function Addform( { addItin }) {
     const [description, setDescription] = useState("")
     const [comment, setComment] = useState("")
@@ -45,7 +48,9 @@ return (
         <input placeholder="Description" value={description} onChange={(event) => setDescription(event.target.value)} />
         {/* <input placeholder="likes" value={like} onChange={(event) => setLike(event.target.value)} /> */}
         {/* <input placeholder="comment" value={comment} onChange={(event) => setComment(event.target.value)} /> */}
+        <Link to="/show">
         <button type="submit">Add Itinerary</button>
+        </Link>
       </form>
     </div>
   );

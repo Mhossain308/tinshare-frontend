@@ -1,22 +1,22 @@
 import React from 'react' 
 import Itineraryitem from '../components/ItineraryItem'
 
-function ItineraryContainer({itineraries}){
+function ItineraryContainer({itineraries, onUpdatedItinerary, onDelete}) {
     const allItins = itineraries.map((itinerary) => {
         return(
             <Itineraryitem
             key={itinerary.id}
             itinerary={itinerary}
-
-            
+            onUpdatedItinerary={onUpdatedItinerary}
+            onDelete={onDelete}
             />
 
         )
     })
 return(
         <>
-            <h1>ItineraryContainer</h1>
-                    {allItins}
+            <ul className="cards">{allItins}</ul>
+                    
         </>
 )
 }
