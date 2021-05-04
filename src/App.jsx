@@ -5,6 +5,7 @@ import Addform from './page/Addform';
 import {Switch, Route} from 'react-router-dom'
 import Updateform from './components/UpdateForm';
 import NavBar from './components/NavBar';
+import Homepage from './page/Homepage';
 
 
 function App() {
@@ -21,7 +22,7 @@ fetch ('http://localhost:4000/itineraries')
 },[] )
 
 function handleForm(newItin) {
-  const updatedItineraryArray = [newItin, ...itineraries]
+  const updatedItineraryArray = [...itineraries, newItin]
   setItineraries(updatedItineraryArray)
 }
 
@@ -45,6 +46,10 @@ const handleDeleteItinerary = (ItineraryToDelete) => {
     <div className="App">
       <NavBar/>
       <Switch>
+            <Route exact path= "/home"> 
+            <Homepage />
+          </Route>
+
           <Route exact path= "/show"> 
             <ItineraryContainer itineraries={itineraries} onUpdatedItinerary={handleUpdatedItinerary} onDelete={handleDeleteItinerary} />
           </Route>

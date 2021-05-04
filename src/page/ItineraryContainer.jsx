@@ -1,5 +1,7 @@
 import React from 'react' 
 import Itineraryitem from '../components/ItineraryItem'
+import './ItineraryContainer.css'
+
 
 function ItineraryContainer({itineraries, onUpdatedItinerary, onDelete}) {
     const allItins = itineraries.map((itinerary) => {
@@ -14,10 +16,10 @@ function ItineraryContainer({itineraries, onUpdatedItinerary, onDelete}) {
         )
     })
 return(
-        <>
-            <ul className="cards">{allItins}</ul>
+        <div>
+           <div className="cards"> {allItins} </div>
                     
-        </>
+        </div>
 )
 }
 

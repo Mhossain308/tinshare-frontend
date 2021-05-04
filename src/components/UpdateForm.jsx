@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-import {Link} from 'react-router-dom'
+
 
 
 function Updateform({itinerary, onUpdatedItinerary, onDelete}) {
 const [editDescription, setEditDescription] = useState("")
-// const [editComment, setEditComment] = useState("comment")
+const [editComment, setEditComment] = useState("")
 console.log(itinerary)
     function handleDescriptionChange(event) {
         setEditDescription(event.target.value)
     }
-    // function handleCommentChange(event) {
-    //     setEditComment(event.target.value)
-    // }
+    function handleCommentChange(event) {
+        setEditComment(event.target.value)
+    }
     function handleSubmit(e) {
         e.preventDefault()
         fetch(`http://localhost:4000/itineraries/${itinerary.id}`, {
@@ -21,7 +21,7 @@ console.log(itinerary)
             },
             body: JSON.stringify({
                 description: editDescription,
-                // comment: editComment,
+                comment: editComment,
                 user_id: 1
             })
         })
@@ -31,16 +31,13 @@ console.log(itinerary)
             onUpdatedItinerary(newItinerary)
         })
             setEditDescription('')
-            // setEditComment('')
+            setEditComment('')
     }
 
-  
-    
-    
-    return (
+  return (
         <form onSubmit={handleSubmit}>
                 <input onChange={handleDescriptionChange} value={editDescription} />
-                {/* <input onChange={handleCommentChange} value={editComment}/> */}
+                <input onChange={handleCommentChange} value={editComment}/>
                 <button style= {{color:"rgb(13, 93, 162)"}} type="submit">Edit Itinerary</button>
                
         </form>
