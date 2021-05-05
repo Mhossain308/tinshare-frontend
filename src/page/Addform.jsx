@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import {useHistory} from 'react-router-dom'
+import { Input } from "@chakra-ui/react"
+import { Button, ButtonGroup } from "@chakra-ui/react"
 
 function Addform( { addItin }) {
   const history = useHistory()
@@ -44,13 +46,13 @@ return (
   <div className="new-form">
     <h2>New Itinerary</h2>
     <form onSubmit={handleSubmit} className="new-itinerary-form">
-      <input placeholder="Country Name" value={country} onChange={(event) => setCountry(event.target.value)} />
-      <input placeholder="Image URL"   value={image} onChange={(event) => setImage(event.target.value)} />
-      <input placeholder="Description" value={description} onChange={(event) => setDescription(event.target.value)} />
+      <Input variant="outline" width="300px"  placeholder="Country Name" value={country} onChange={(event) => setCountry(event.target.value)} />
+      <Input variant="outline" width="300px"  placeholder="Image URL"   value={image} onChange={(event) => setImage(event.target.value)} />
+      <Input variant="outline" width="300px"  placeholder="Description" value={description} onChange={(event) => setDescription(event.target.value)} />
       {/* <input placeholder="likes" value={like} onChange={(event) => setLike(event.target.value)} /> */}
       {/* <input placeholder="comment" value={comment} onChange={(event) => setComment(event.target.value)} /> */}
     
-      <button type="submit">Add Itinerary</button>
+      <Button colorScheme="teal" size="sm" type="submit">Add Itinerary</Button>
      
     </form>
   </div>

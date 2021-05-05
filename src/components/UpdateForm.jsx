@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { Input } from "@chakra-ui/react"
+import { Button,} from "@chakra-ui/react"
 
 
 
@@ -9,9 +11,9 @@ console.log(itinerary)
     function handleDescriptionChange(event) {
         setEditDescription(event.target.value)
     }
-    function handleCommentChange(event) {
-        setEditComment(event.target.value)
-    }
+    // function handleCommentChange(event) {
+    //     setEditComment(event.target.value)
+    // }
     function handleSubmit(e) {
         e.preventDefault()
         fetch(`http://localhost:4000/itineraries/${itinerary.id}`, {
@@ -36,9 +38,9 @@ console.log(itinerary)
 
   return (
         <form onSubmit={handleSubmit}>
-                <input onChange={handleDescriptionChange} value={editDescription} />
-                <input onChange={handleCommentChange} value={editComment}/>
-                <button style= {{color:"rgb(13, 93, 162)"}} type="submit">Edit Itinerary</button>
+                <Input variant="outline" onChange={handleDescriptionChange} value={editDescription} />
+                {/* <input onChange={handleCommentChange} value={editComment}/> */}
+                <Button colorScheme="teal" size="sm" type="submit">Submit!</Button>
                
         </form>
     )

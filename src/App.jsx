@@ -6,7 +6,7 @@ import {Switch, Route} from 'react-router-dom'
 import Updateform from './components/UpdateForm';
 import NavBar from './components/NavBar';
 import Homepage from './page/Homepage';
-
+import { ChakraProvider } from "@chakra-ui/react"
 
 function App() {
   const [itineraries, setItineraries] = useState ([])
@@ -43,26 +43,30 @@ const handleDeleteItinerary = (ItineraryToDelete) => {
   
   
   return (
-    <div className="App">
-      <NavBar/>
-      <Switch>
+  
+<ChakraProvider>
+      <div className="App">
+        <NavBar/>
+          <Switch>
             <Route exact path= "/home"> 
-            <Homepage />
-          </Route>
+                <Homepage />
+            </Route>
 
-          <Route exact path= "/show"> 
-            <ItineraryContainer itineraries={itineraries} onUpdatedItinerary={handleUpdatedItinerary} onDelete={handleDeleteItinerary} />
-          </Route>
+            <Route exact path= "/show"> 
+                <ItineraryContainer itineraries={itineraries} onUpdatedItinerary={handleUpdatedItinerary} onDelete={handleDeleteItinerary} />
+            </Route>
        
-          <Route exact path= "/update"> 
+            <Route exact path= "/update"> 
               <Updateform onUpdatedItinerary={handleUpdatedItinerary}/>
-          </Route>
+            </Route>
         
-           <Route exact path= "/new">
+            <Route exact path= "/new">
               <Addform addItin={handleForm} />
-          </Route>
-     </Switch>
-    </div>
+           </Route>
+        </Switch>
+      </div>
+</ChakraProvider>
+  
   );
 }
 

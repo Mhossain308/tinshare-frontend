@@ -7,9 +7,13 @@ function NavBar() {
    
 return ( 
         <div>
+          ||
           <Link to="/home"> Home  </Link>
+          ||
           <Link to="/show"> Your Itineraries  </Link>
+          ||
           <Link to="/new"> Add New Itinerary  </Link>
+          ||
             
         </div>
     )
