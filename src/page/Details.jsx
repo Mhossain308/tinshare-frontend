@@ -3,8 +3,16 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Box } from '@chakra-ui/react'
 import { Flex, Spacer } from '@chakra-ui/react'
+// import {Image} from '@chakra-ui/react'
+import {Text} from '@chakra-ui/react'
+import './Details.css'
+
+
+
+
 function Details() {
-    const [itinerary, setItinerary] = useState({ country: "", description: "", image: "", location: "", })
+    
+    const [details, setDetails] = useState({ country: "", description: "", image: "", location: "" })
     const { id } = useParams()
 
     useEffect(() => {
@@ -12,29 +20,38 @@ function Details() {
             .then(r => r.json())
             .then(product => {
                 console.log(product)
-                setItinerary(product)
+                setDetails(product)
             })
 
     }, [])
 
+   
 
 
 
 
-    return (
+return (
         <div>
 
-                <h1> {itinerary.location.country} </h1>
-                <Flex align="right" justify="right">
-            <Spacer />
-                <p>{itinerary.description}</p>
+                <Text fontSize="7xl"> {details.location.country} </Text>
+                {/* <Box position="center"   w="650px" border="4px" borderColor="blue.200"> */}
+                <div className="img">
+                <img position="center" src={details.location.image} />
+                </div>
+            {/* </Box> */}
+                <Flex align="center" justify="center">
+            {/* <Spacer /> */}
+           
+            {/* <Box position="center" align="right" w="650px" h="435px"  border="4px" borderColor="blue.200"> */}
+                <Text className="text" fontSize="24px" align="center"> {details.description} </Text>
+                {/* </Box> */}
                 </Flex>
-            <Box w="650px" border="4px" borderColor="blue.200">
-                <img src={itinerary.location.image} />
-            </Box>
+            
 
 
         </div>
+
+        
     )
 
 }

@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import { Input } from "@chakra-ui/react"
 import { Button} from "@chakra-ui/react"
+import { Textarea } from "@chakra-ui/react"
 
 
 
 function Updateform({itinerary, onUpdatedItinerary, onDelete}) {
-const [editDescription, setEditDescription] = useState("")
+const [editDescription, setEditDescription] = useState(itinerary.description)
 const [editComment, setEditComment] = useState("")
 console.log(itinerary)
-    // function handleDescriptionChange(event) {
-    //     setEditDescription(event.target.value)
-    // }
+    function handleDescriptionChange(event) {
+        setEditDescription(event.target.value)
+    }
     function handleCommentChange(event) {
         setEditComment(event.target.value)
     }
@@ -38,8 +39,8 @@ console.log(itinerary)
 
   return (
         <form onSubmit={handleSubmit}>
-                {/* <Input variant="outline" onChange={handleDescriptionChange} value={editDescription} /> */}
-                <Input variant="outline" onChange={handleCommentChange} value={editComment}/>
+                <Textarea variant="outline" onChange={handleDescriptionChange} value={editDescription} />
+                <Input variant="outline" placeholder="comment" onChange={handleCommentChange} value={editComment}/>
                 <Button colorScheme="teal" size="sm" type="submit">Submit!</Button>
                
         </form>

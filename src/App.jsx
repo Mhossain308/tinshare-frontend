@@ -46,12 +46,14 @@ function App() {
   return (
 
     <ChakraProvider>
-      <div className="App">
         <NavBar />
-        <Switch>
-          <Route exact path="/home">
+      <div className="App">
+      <Route exact path="/home">
             <Homepage />
           </Route>
+
+        <Switch>
+          
 
           <Route exact path="/show">
             <ItineraryContainer itineraries={itineraries} onUpdatedItinerary={handleUpdatedItinerary} onDelete={handleDeleteItinerary} />
@@ -65,8 +67,8 @@ function App() {
             <Addform addItin={handleForm} />
           </Route>
           <Route exact path="/itineraries/:id">
-          <Details itineraries={itineraries} />
-        </Route>
+            <Details itineraries={itineraries}/>
+          </Route>
         </Switch>
       </div>
     </ChakraProvider>

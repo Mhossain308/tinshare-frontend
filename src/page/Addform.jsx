@@ -52,9 +52,9 @@ function Addform({ addItin }) {
           <Stack spacing={8} width="300px">
             <Input variant="outline" width="300px" placeholder="Country Name" value={country} onChange={(event) => setCountry(event.target.value)} />
             <Input variant="outline" width="300px" placeholder="Image URL" value={image} onChange={(event) => setImage(event.target.value)} />
+            <Input variant="outline" width="300px" placeholder="Comment" value={comment} onChange={(event) => setComment(event.target.value)} />
             <Input variant="outline" width="300px" placeholder="Description" value={description} onChange={(event) => setDescription(event.target.value)} />
             {/* <input placeholder="likes" value={like} onChange={(event) => setLike(event.target.value)} /> */}
-            {/* <input placeholder="comment" value={comment} onChange={(event) => setComment(event.target.value)} /> */}
 
             <Button colorScheme="teal" size="sm" type="submit">Add Itinerary</Button>
           </Stack>
